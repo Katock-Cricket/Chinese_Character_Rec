@@ -1,12 +1,13 @@
 import torch
 import torchvision.transforms as transforms
 from PIL import Image
+import pickle
 
 from Arguments import Args
 from vgg19 import VGG19
 
 
-def demo(label, image_path):
+def demo(image_path):
     transform = transforms.Compose([transforms.Resize((Args.img_size, Args.img_size)), transforms.ToTensor()])
     img = Image.open(image_path).convert('RGB')
     img = transform(img)
@@ -17,10 +18,13 @@ def demo(label, image_path):
     model.load_state_dict(checkpoint['model_state_dict'])
     output = model(img)
     _, pred = torch.max(output.data, 1)
-    pred = int(pred)
-    print('input:', label)
-    print('predict:', pred)
+    f = open('char_dict', 'rb')
+    dic = pickle.load(f)
+    for cha in dic:
+        if dic[cha] == int(pred):
+            print('predict: ', cha)
+    f.close()
 
 
 if __name__ == '__main__':
-    demo(45, './45.jpg')
+    demo('./test.jpg')
