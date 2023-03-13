@@ -3,7 +3,8 @@ class Args:
     continue_train = True
     data_root = '../data/'
     log_root = '../log/'
-    batch_size = 256
-    epoch = 50
-    num_class = 1000
-    log_name = 'log42.pth'
+    batch_size = 512
+    epoch = 100
+    lr = 0.00005
+    num_class = 3755
+    log_name = 'log.pth'
