@@ -9,7 +9,7 @@ class MyDataset(Dataset):
         labels = []
         with open(txt_path, 'r') as f:
             for line in f:
-                if int(line.split('\\')[1]) >= num_class:  # just get images of the first #num_class
+                if int(line.split('\\')[1]) >= num_class:
                     break
                 line = line.strip('\n')
                 images.append(line)

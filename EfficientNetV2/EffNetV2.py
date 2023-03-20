@@ -15,7 +15,7 @@ parser.add_argument('--img_size', dest='img_size', type=int, default=32, help='r
 parser.add_argument('--data_root', dest='data_root', type=str, default='../../data/', help='Path to data')
 parser.add_argument('--log_root', dest='log_root', type=str, default='../../log/', help='Path to model.pth')
 parser.add_argument('--num_classes', dest='num_classes', type=int, default=3755, help='Classes of character')
-parser.add_argument('--demo_img', dest='demo_img', type=str, default='../asserts/fo2.png', help='Path to demo image')
+parser.add_argument('--demo_img', dest='demo_img', type=str, default='../asserts/pei.png', help='Path to demo image')
 args = parser.parse_args()
 
 
