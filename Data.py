@@ -1,6 +1,5 @@
 from PIL import Image
 from torch.utils.data import Dataset
-import os
 
 
 class MyDataset(Dataset):
@@ -28,19 +27,3 @@ class MyDataset(Dataset):
 
     def __len__(self):
         return len(self.labels)
-
-
-def classes_txt(root, out_path, num_class=None):
-    dirs = os.listdir(root)
-    if not num_class:
-        num_class = len(dirs)
-
-    with open(out_path, 'w') as f:
-        end = 0
-        if end < num_class - 1:
-            dirs.sort()
-            dirs = dirs[end:num_class]
-            for dir1 in dirs:
-                files = os.listdir(os.path.join(root, dir1))
-                for file in files:
-                    f.write(os.path.join(root, dir1, file) + '\n')
